@@ -1,0 +1,36 @@
+erDiagram
+    PRESTATARIO {
+        int id PK "Identificador único"
+        varchar(100) nombre "Nombre completo"
+        varchar(150) correo "Correo electrónico único"
+        varchar(20) telefono "Teléfono de contacto"
+    }
+
+    EQUIPO {
+        varchar(20) codigo PK "Código único del equipo"
+        varchar(100) nombre "Nombre del equipo"
+        varchar(50) categoria "Categoría del equipo"
+        varchar(500) descripcion "Descripción opcional"
+        bool disponible "Disponibilidad actual"
+    }
+
+    PRESTAMO {
+        int id PK "Identificador único"
+        int prestatario_id FK "Referencia al prestatario"
+        date fecha_prestamo "Fecha en que se realiza el préstamo"
+        date fecha_devolucion_prevista "Fecha límite de devolución"
+        date fecha_devolucion_real "Fecha real de devolución (opcional)"
+        estado_prestamo estado "Estado del préstamo"
+    }
+
+    DETALLE_PRESTAMO {
+        int id PK "Identificador único"
+        int prestamo_id FK "Referencia al préstamo"
+        varchar(20) equipo_codigo FK "Referencia al equipo"
+        int cantidad "Cantidad de equipos prestados"
+        varchar(500) observaciones "Observaciones del préstamo"
+    }
+
+    PRESTATARIO ||--o{ PRESTAMO : "realiza"
+    PRESTAMO ||--|{ DETALLE_PRESTAMO : "contiene"
+    EQUIPO ||--o{ DETALLE_PRESTAMO : "incluye"

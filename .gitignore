@@ -1,0 +1,25 @@
+# Entorno y secretos
+.env
+.env.local
+*.env
+
+# Dependencias
+node_modules/
+vendor/
+
+# Docker
+docker-compose.override.yml
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
